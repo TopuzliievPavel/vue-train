@@ -32,7 +32,7 @@
     justify-content: center;
     min-height: 100vh;
     padding: 80px 0;
-    background-image: url("../../assets/img/src/slide.jpg");
+    background-image: url("../../assets/img/slide.jpg");
     background-size: cover;
     background-position: 50% 50%;
     background-repeat: no-repeat;

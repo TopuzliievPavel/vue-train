@@ -5,7 +5,7 @@
     </button>
     <MenuList />
     <router-link class="logo" to="/">
-      <img src="../../assets/img/src/logo.png" alt="SSA Group">
+      <img src="../../assets/img/logo.png" alt="SSA Group">
     </router-link>
   </header>
 </template>
