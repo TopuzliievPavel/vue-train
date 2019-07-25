@@ -1,0 +1,24 @@
+@import "base";
+@import "vendors/normalize";
+@import "vendors/typography";
+
+@import "fonts/fonts";
+@import "fonts/icons";
+
+html {
+  font-size: 20px;
+  line-height: 2;
+}
+
+body {
+  font-family: "RobotoRegular", Helvetica, sans-serif;
+  min-width: 320px;
+  color: $primary;
+}
+
+.container {
+  max-width: 1170px;
+  margin: 0 auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}

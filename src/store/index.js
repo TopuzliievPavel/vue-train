@@ -31,8 +31,7 @@ export const store = new Vuex.Store({
           id: 5,
           title: "Sign in",
           link: "/signIn"
-        }
-        ,
+        },
         {
           id: 6,
           title: "Sign up",
@@ -41,7 +40,4 @@ export const store = new Vuex.Store({
       ]
     }
   }
-  // mutations: {
-  //
-  // }
 });

@@ -1,12 +1,12 @@
 import Vue from "vue"
 import VueRouter from "vue-router"
-import Home from "@/Layout/Home/Home"
-import Content from "@/Layout/Content/Content"
-import About from "@/Layout/About/About"
-import Contact from "@/Layout/Contact/Contact"
-import Other from "@/Layout/OtherLink/Other"
-import SignUp from "@/Layout/SignUp/SignUp"
-import SignIn from "@/Layout/SignIn/SignIn"
+import Home from "@/pages/Home"
+import Content from "@/pages/Content"
+import About from "@/pages/About"
+import Contact from "@/pages/Contact"
+import Other from "@/pages/Other"
+import SignUp from "@/pages/Sign-up"
+import SignIn from "@/pages/Sign-in"
 
 Vue.use(VueRouter);
 
@@ -38,12 +38,12 @@ export default new VueRouter({
       component: Contact
     },
     {
-      path: "/signin",
+      path: "/signIn",
       name: "SignIn",
       component: SignIn
     },
     {
-      path: "/signup",
+      path: "/signUp",
       name: "SignUp",
       component: SignUp
     }

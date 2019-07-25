@@ -1,0 +1,9 @@
+@import "../base/mixins";
+
+@include font-face("robotoThin", "./assets/fonts/Roboto/RobotoThin/RobotoThin", 100);
+@include font-face("robotoLight", "./assets/fonts/Roboto/RobotoLight/RobotoLight", 300);
+@include font-face("robotoRegular", "./assets/fonts/Roboto/RobotoRegular/RobotoRegular");
+@include font-face("robotoMedium", "./assets/fonts/Roboto/RobotoMedium/RobotoMedium", 500);
+@include font-face("robotoBold", "./assets/fonts/Roboto/RobotoBold/RobotoBold", bold);
+@include font-face("robotoBlack", "./assets/fonts/Roboto/RobotoBlack/RobotoBlack", 900);
+@include font-face("knewaveRegular", "./assets/fonts/Knewave/knewaveRegular");
