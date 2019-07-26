@@ -1,16 +1,14 @@
-<template>
-  <div id="app">
-    <Header />
-    <main>
-      <router-view></router-view>
-    </main>
-    <AppFooter />
-  </div>
+<template lang="pug">
+  #app
+    Header(:image-path="require('./assets/img/logo.png')")
+    main
+      router-view
+    AppFooter
 </template>
 
 <script>
 import Header from "./components/AppHeader"
-import AppFooter from "./components/AppFooter";
+import AppFooter from "./components/AppFooter"
 
 export default {
   name: "app",

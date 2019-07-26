@@ -5,8 +5,6 @@ import Content from "@/pages/Content"
 import About from "@/pages/About"
 import Contact from "@/pages/Contact"
 import Other from "@/pages/Other"
-import SignUp from "@/pages/Sign-up"
-import SignIn from "@/pages/Sign-in"
 
 Vue.use(VueRouter);
 
@@ -36,16 +34,6 @@ export default new VueRouter({
       path: "/contact",
       name: "Contact",
       component: Contact
-    },
-    {
-      path: "/signIn",
-      name: "SignIn",
-      component: SignIn
-    },
-    {
-      path: "/signUp",
-      name: "SignUp",
-      component: SignUp
     }
   ],
   mode: "history"

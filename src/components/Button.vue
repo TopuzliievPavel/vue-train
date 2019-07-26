@@ -5,9 +5,7 @@
 <script>
   export default {
     name: "Button",
-    props: {
-      title: null
-    }
+    props: ["title"]
   }
 </script>
 
@@ -22,8 +20,7 @@
     margin-bottom: 10px;
     font-size: $btn-font-size;
     line-height: 1.3;
-    font-family: "Roboto", sans-serif;
-    font-weight: 500;
+    font-family: "RobotoMedium", sans-serif;
     color: $btn-color;
     text-transform: capitalize;
     border: solid 2px currentColor;

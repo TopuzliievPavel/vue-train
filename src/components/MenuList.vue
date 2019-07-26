@@ -1,41 +1,55 @@
-<template>
-  <ul class="menu-list">
-    <li class="menu-list__item" v-for="(item, id) in menuItems" :key="id">
-      <router-link class="menu-list__link" :to="item.link">{{item.title}}</router-link>
-    </li>
-  </ul>
+<template lang="pug">
+  ul(:class="className")
+    li.menu-list__item(
+      v-for="(item, id) in menuItems",
+      :key="id"
+      )
+      router-link.menu-list__link(:to="item.link") {{ item.title }}
 </template>
 
 <script>
   export default {
     name: "MenuList",
-    computed: {
-      menuItems() {
-        return this.$store.state.menuItems()
-      }
-    }
+    props: ["className"],
+    data: () => ({
+      menuItems: [
+        {
+          id: 1,
+          title: "Content",
+          link: "/content"
+        },
+        {
+          id: 2,
+          title: "Other Link",
+          link: "/other"
+        },
+        {
+          id: 3,
+          title: "About Us",
+          link: "/about"
+        },
+        {
+          id: 4,
+          title: "Contact",
+          link: "/contact"
+        }
+      ]
+    })
+    // computed: {
+    //   menuItems() {
+    //     return this.$store.state.menuItems()
+    //   }
+    // }
   }
 </script>
 
 <style lang="scss" scoped>
   @import "../scss/base";
-  .menu-list {
-    display: none;
-
-    @media screen and (min-width: 768px) {
-      display: flex;
-    }
-  }
 
   .menu-list__item {
-    padding: 25px 10px;
-    font-size: 18px;
+    padding: 15px 10px;
+    font-size: 24px;
     text-transform: capitalize;
-
-    @include media(">desktop") {
-      padding: 15px 10px;
-      font-size: 24px;
-    }
   }
 
   .menu-list__link {
@@ -44,7 +58,7 @@
 
     &:hover,
     &:focus {
-      color: #FF0000;
+      color: $danger;
     }
   }
 </style>

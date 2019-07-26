@@ -1,32 +1,32 @@
-<template>
-  <section class="contact">
-    <div class="container contact-wrap">
-      <h2 class="title">Contact</h2>
-      <p>Thank you for your interest in Awesome Motive Inc.</p>
-      <p>If you’re looking for technical support, have a billing question or complaint, then please use the contact form on the specific product.</p>
-      <p>If you’re looking for a strategic partnership with one of our properties, then please use the dedicated form on the specific product website.</p>
-      <p>If none of the above apply to you, then go ahead and use the contact form below. Someone will be in touch within a week.</p>
-      <form class="contact-form" action="/">
-        <div class="form-group">
-          <label htmlFor="exampleInputEmail">Your name <span class="contact-star">*</span></label>
-          <input type="email" class="form-control" id="exampleInputEmail" aria-describedby="emailHelp"/>
-        </div>
-        <div class="form-group">
-          <label htmlFor="exampleInputPassword">Your email <span class="contact-star">*</span></label>
-          <input type="password" class="form-control" id="exampleInputPassword" />
-        </div>
-        <div class="form-group">
-          <label htmlFor="exampleInputText">What are you thinking <span class="contact-star">*</span></label>
-          <input type="text" class="form-control" id="exampleInputText" />
-        </div>
-        <div class="form-group form-check">
-          <label class="form-check-label" htmlFor="textarea">Detailed message <span class="contact-star">*</span></label>
-          <textarea name="textarea" id="textarea" cols="30" rows="4" class="form-control"></textarea>
-        </div>
-        <Button class="btn btn_theme_primary" title="Submit"/>
-      </form>
-    </div>
-  </section>
+<template lang="pug">
+  section.contact
+    .container.contact-wrap
+      p Thank you for your interest in Awesome Motive Inc.
+      p If you’re looking for technical support, have a billing question or complaint, then please use the contact form on the specific product.
+      p If you’re looking for a strategic partnership with one of our properties, then please use the dedicated form on the specific product website.
+      p If none of the above apply to you, then go ahead and use the contact form below. Someone will be in touch within a week.
+      form.contact-form(action="/")
+        .form-group
+          label(htmlfor="exampleInputEmail")
+            | Your name
+            span.contact-star *
+          input#exampleInputEmail.form-control(type="email", aria-describedby="emailHelp")
+        .form-group
+          label(htmlfor="exampleInputPassword")
+            | Your email
+            span.contact-star *
+          input#exampleInputPassword.form-control(type="password")
+        .form-group
+          label(htmlfor="exampleInputText")
+            | What are you thinking
+            span.contact-star *
+          input#exampleInputText.form-control(type="text")
+        .form-group.form-check
+          label.form-check-label(htmlfor="textarea")
+            | Detailed message
+            span.contact-star *
+          textarea#textarea.form-control(name="textarea", cols="30", rows="4")
+        Button.btn.btn_theme_primary(title="Submit")
 </template>
 
 <script>

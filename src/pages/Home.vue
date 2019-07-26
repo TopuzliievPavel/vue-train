@@ -1,7 +1,6 @@
-<template>
-  <div class="home">
-    <Visual />
-  </div>
+<template lang="pug">
+  .home
+    Visual
 </template>
 
 <script>
@@ -14,7 +13,3 @@
     }
   }
 </script>
-
-<style lang="scss" scoped>
-
-</style>

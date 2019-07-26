@@ -1,46 +1,40 @@
-<template>
-    <div class="software container">
-      <article class="software__article">
-        <div class="software__box">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem cupiditate ea eligendi laborum libero
-            maxime nihil numquam placeat totam ullam! Beatae, explicabo, minima! Assumenda et molestiae omnis quam omnis
-            quam</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem cupiditate ea eligendi laborum libero
-            maxime nihil numquam placeat totam ullam! Beatae, explicabo, minima! Assumenda et molestiae omnis quam omnis
-            quam</p>
-
-          <figure class="software__figure">
-            <img src="../assets/img/train.jpg" alt="Funny train" />
-            <figcaption>Tussencop</figcaption>
-          </figure>
-
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ad animi aspernatur consequatur deserunt
-            dolores, dolorum fugiat harum inventore iste, laboriosam modi quam quisquam reiciendis vitae. Consequuntur
-            delectus dicta distinctio error illo iste magni maxime molestias nostrum officia quas, quasi quibusdam quos,
-            ratione repellat sed voluptatum. Corporis cum facere fuga necessitatibus optio perferendis perspiciatis
-            sint, sit. Ab animi architecto asperiores, doloribus facere facilis laborum odio repellendus sequi sint
-            tempore vel?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem cupiditate ea eligendi laborum
-            libero maxime nihil numquam placeat totam ullam! Beatae, explicabo, minima! Assumenda et molestiae omnis
-            quam, similique tenetur!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem cupiditate ea
-            eligendi laborum libero maxime nihil numquam placeat totam ullam! Beatae, explicabo, minima! Assumenda et
-            molestiae omnis quam, similique tenetur!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem
-            cupiditate ea eligendi laborum libero maxime nihil numquam placeat totam ullam!</p>
-        </div>
-      </article>
-      <aside class="aside">
-        <div class="aside_widget">
-          <h3 class="aside__title">Some title</h3>
-          <blockquote class="aside__text">
-            <div class="aside__text-wrap">
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur dolore ea incidunt praesentium
-                quidem quos tempora. Ab aliquid distinctio, ducimus eius magnam obcaecati odio praesentium quae.
-                Doloribus magnam nemo nihil?</p>
-            </div>
-            <cite class="aside__author">Leonardo da Vinci</cite>
-          </blockquote>
-        </div>
-      </aside>
-    </div>
+<template lang="pug">
+  .software.container
+    article.software__article
+      .software__box
+        p
+          | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem cupiditate ea eligendi laborum libero
+          | maxime nihil numquam placeat totam ullam! Beatae, explicabo, minima! Assumenda et molestiae omnis quam omnis
+          | quam
+        p
+          | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem cupiditate ea eligendi laborum libero
+          | maxime nihil numquam placeat totam ullam! Beatae, explicabo, minima! Assumenda et molestiae omnis quam omnis
+          | quam
+        figure.software__figure
+          img(src='../assets/img/train.jpg', alt='Funny train')
+          figcaption Tussencop
+        p
+          | Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ad animi aspernatur consequatur deserunt
+          | dolores, dolorum fugiat harum inventore iste, laboriosam modi quam quisquam reiciendis vitae. Consequuntur
+          | delectus dicta distinctio error illo iste magni maxime molestias nostrum officia quas, quasi quibusdam quos,
+          | ratione repellat sed voluptatum. Corporis cum facere fuga necessitatibus optio perferendis perspiciatis
+          | sint, sit. Ab animi architecto asperiores, doloribus facere facilis laborum odio repellendus sequi sint
+          | tempore vel?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem cupiditate ea eligendi laborum
+          | libero maxime nihil numquam placeat totam ullam! Beatae, explicabo, minima! Assumenda et molestiae omnis
+          | quam, similique tenetur!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem cupiditate ea
+          | eligendi laborum libero maxime nihil numquam placeat totam ullam! Beatae, explicabo, minima! Assumenda et
+          | molestiae omnis quam, similique tenetur!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem
+          | cupiditate ea eligendi laborum libero maxime nihil numquam placeat totam ullam!
+    aside.aside
+      .aside_widget
+        h3.aside__title Some title
+        blockquote.aside__text
+          .aside__text-wrap
+            p
+              | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur dolore ea incidunt praesentium
+              | quidem quos tempora. Ab aliquid distinctio, ducimus eius magnam obcaecati odio praesentium quae.
+              | Doloribus magnam nemo nihil?
+          cite.aside__author Leonardo da Vinci
 </template>
 
 <script>
@@ -126,11 +120,6 @@
   }
 
   .aside__title {
-    color: $base-color;
-    font-family: "Knewave", cursive;
-    font-size: 28px;
-    text-transform: uppercase;
-    margin-bottom: 30px;
     letter-spacing: 1.2px;
   }
 
@@ -159,8 +148,7 @@
     justify-content: flex-end;
     color: $info;
     font-size: 12px;
-    font-family: "Roboto", sans-serif;
-    font-weight: 500;
+    font-family: "RobotoMedium", sans-serif;
     font-style: normal;
   }
 </style>

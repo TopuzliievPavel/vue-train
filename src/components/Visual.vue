@@ -1,14 +1,10 @@
-<template>
-  <section class="visual">
-    <div class="visual__inner">
-      <h1 class="visual__title">Lorem ipsum dolor sit amet</h1>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus accusantium ad, aliquam amet assumenda atque autem cumque debitis, earum est ipsa labore non praesentium quidem repudiandae tempore voluptates? Molestias, tempore, voluptatem.
-      </p>
-      <Button class="btn btn_active visual__btn" title="Download" />
-      <Button class="link visual__btn" title="Meer informatie" />
-    </div>
-  </section>
+<template lang="pug">
+  section.visual
+    .visual__inner
+        h1.visual__title Lorem ipsum dolor sit amet
+        p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus accusantium ad, aliquam ametassumenda atque autem cumque debitis, earum est ipsa labore non praesentium quidem repudiandae tempore voluptates? Molestias, tempore, voluptatem.
+        Button.btn.btn_active.visual__btn(title="Download")
+        Button.link.visual__btn(title="Meer informatie")
 </template>
 
 <script>
@@ -84,10 +80,6 @@
 
   .visual__title {
     font-size: 24px;
-    font-family: 'Knewave', cursive;
-    color: $info;
-    text-transform: uppercase;
-    margin-bottom: 30px;
 
     @include media(">=desktop") {
       font-size: 44px;

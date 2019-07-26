@@ -1,25 +1,35 @@
-<template>
-  <footer class="app-footer">
-   <div class="container">
-     <p>Some long long text about copyright</p>
-     <ul class="social-list">
-       <li class="social-list__item">
-         <a href="https://twitter.com/?lang=ru" target="_blank"><i class="icon icon-twitter-logo"></i></a>
-       </li>
-       <li class="social-list__item">
-         <a href="https://uk-ua.facebook.com/" target="_blank"><i class="icon icon-facebook-logo"></i></a>
-       </li>
-       <li class="social-list__item">
-         <a href="https://www.youtube.com/" target="_blank"><i class="icon icon-button-play"></i></a>
-       </li>
-     </ul>
-   </div>
-  </footer>
+<template lang="pug">
+  footer.app-footer
+    .container
+      p Some long long text about copyright
+      ul.social-list
+        li.social-list__item(
+          v-for="(item, id) in socialItems"
+          :key="id")
+          a.social-list__link(target="_blank")
+            i(:class="item.icon")
+
 </template>
 
 <script>
   export default {
-    name: "AppFooter"
+    name: "AppFooter",
+    data: () => ({
+      socialItems: [
+        {
+          icon: "icon icon-twitter-logo",
+          link: "https://twitter.com/?lang=ru"
+        },
+        {
+          icon: "icon icon-facebook-logo",
+          link: "https://uk-ua.facebook.com/"
+        },
+        {
+          icon: "icon icon-button-play",
+          link: "https://www.youtube.com/"
+        }
+      ]
+    })
   }
 </script>
 

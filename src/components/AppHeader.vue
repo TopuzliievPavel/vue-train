@@ -1,13 +1,11 @@
-<template>
-  <header class="header">
-    <button class="menu-open">
-      <span></span>
-    </button>
-    <MenuList />
-    <router-link class="logo" to="/">
-      <img src="../assets/img/logo.png" alt="SSA Group">
-    </router-link>
-  </header>
+<template lang="pug">
+  header.header(:class="{ 'active': showMenu }")
+    button.menu-open(@click="showNav")
+      span.menu-open__line
+    transition(name="fade")
+      MenuList(class-name="menu-list")
+    router-link.logo(to="/")
+      img(:src="imagePath", alt="SSA Group")
 </template>
 
 <script>
@@ -17,11 +15,24 @@
     name: "Header",
     components: {
       MenuList
-    }
+    },
+    data: () => (
+      {
+        showMenu: false,
+        showLink: false
+      }
+    ),
+    methods: {
+      showNav() {
+        this.showMenu = !this.showMenu
+      }
+    },
+    props: ["imagePath"]
   }
 </script>
 
 <style lang="scss" scoped>
+  @import "../scss/base";
 
   .header {
     position: absolute;
@@ -32,11 +43,17 @@
     justify-content: space-between;
     align-items: center;
     padding: 5px 10px;
-    background-color: #50e3c2;
+    background-color: $success;
     z-index: 9999;
 
-    @media screen and (min-width: 768px) {
+    @include media(">=tablet"){
       padding: 0 50px;
+    }
+
+    &.active {
+     .menu-list {
+       display: block;
+     }
     }
   }
 
@@ -44,37 +61,43 @@
     display: block;
   }
 
+  .menu-list {
+    @include media(">=tablet"){
+      display: flex;
+    }
+  }
+
   // header menu button
   .menu-open {
-    display: block;
     position: relative;
     height: 30px;
     width: 30px;
+    padding: 0;
 
-    background-color: #434c6d;
+    background: none;
     border: none;
     border-radius: 4px;
 
-    span,
+    .menu-open__line,
     &:after,
     &:before {
       content: "";
       position: absolute;
-      width: 20px;
-      height: 2px;
+      width: 25px;
+      height: 3px;
       top: 14px;
       left: 50%;
       transform: translateX(-50%);
 
-      background-color: #fff;
-      border-radius: 3px;
+      background-color: $primary;
+      border-radius: 4px;
       transition: transform .3s;
     }
 
     &:before {
       top: 8px;
 
-      .menu-active & {
+      .active & {
         top: 14px;
         transform: translateX(-50%) rotate(45deg);
       }
@@ -83,21 +106,34 @@
     &:after {
       top: 20px;
 
-      .menu-active & {
+      .active & {
         top: 14px;
         transform: translateX(-50%) rotate(-45deg);
       }
     }
 
-    span {
-      .menu-active & {
+    .menu-open__line {
+      opacity: 1;
+      visibility: visible;
+
+      .active & {
         opacity: 0;
         visibility: hidden;
       }
     }
 
-    @media screen and (min-width: 768px) {
+    @include media(">=tablet"){
       display: none;
     }
+  }
+
+  .fade-enter-active,
+  .fade-leave-active {
+    transition: top .5s ease;
+  }
+
+  .fade-enter,
+  .fade-leave-to {
+    transition: all .5s ease;
   }
 </style>
