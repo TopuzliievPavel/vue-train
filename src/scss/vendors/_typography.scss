@@ -44,7 +44,7 @@ h4 {
 
 h5 {
   font-size: $h5-basic-font-size;
-  color: $base-color;
+  color: $primary;
 }
 
 h6 {
@@ -53,7 +53,6 @@ h6 {
 
 .h1 {
   font-size: $h1-basic-font-size;
-  color: $primary;
 }
 
 .h2 {
@@ -84,8 +83,4 @@ h6 {
 
 p {
   margin-bottom: 1em;
-}
-
-a {
-  color: $base-link-color;
 }

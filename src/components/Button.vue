@@ -1,11 +1,18 @@
-<template>
-  <button>{{title}}</button>
+<template lang="pug">
+  button(:class="className") {{ title }}
 </template>
 
 <script>
   export default {
-    name: "Button",
-    props: ["title"]
+    name: "page-button",
+    props: {
+      title: {
+        type: String
+      },
+      className: {
+        type: String
+      }
+    }
   }
 </script>
 

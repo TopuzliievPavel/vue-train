@@ -1,9 +1,8 @@
 <template lang="pug">
-  header.header(:class="{ 'active': showMenu }")
-    button.menu-open(@click="showNav")
+  header.app-header(:class="{ 'active': showMenu }")
+    button.menu-open(@click="showMenu = !showMenu")
       span.menu-open__line
-    transition(name="fade")
-      MenuList(class-name="menu-list")
+    menu-list(class="menu-list" :menuItems="menuItems")
     router-link.logo(to="/")
       img(:src="imagePath", alt="SSA Group")
 </template>
@@ -12,19 +11,35 @@
   import MenuList from "./MenuList";
 
   export default {
-    name: "Header",
+    name: "app-header",
     components: {
       MenuList
     },
-    data: () => (
-      {
+    data() {
+      return {
         showMenu: false,
-        showLink: false
-      }
-    ),
-    methods: {
-      showNav() {
-        this.showMenu = !this.showMenu
+        menuItems: [
+          {
+            id: 1,
+            title: "Content",
+            link: "/content"
+          },
+          {
+            id: 2,
+            title: "Other Link",
+            link: "/other"
+          },
+          {
+            id: 3,
+            title: "About Us",
+            link: "/about"
+          },
+          {
+            id: 4,
+            title: "Contact",
+            link: "/contact"
+          }
+        ]
       }
     },
     props: ["imagePath"]
@@ -34,7 +49,7 @@
 <style lang="scss" scoped>
   @import "../scss/base";
 
-  .header {
+  .app-header {
     position: absolute;
     width: 100%;
     top: 0;
@@ -52,7 +67,7 @@
 
     &.active {
      .menu-list {
-       display: block;
+       right: 0;
      }
     }
   }
@@ -62,7 +77,15 @@
   }
 
   .menu-list {
+    position: absolute;
+    width: 100%;
+    top: 100%;
+    right: 100%;
+    text-align: center;
+    background-color:$success;
+    transition: right .3s ease;
     @include media(">=tablet"){
+      position: static;
       display: flex;
     }
   }
@@ -125,15 +148,5 @@
     @include media(">=tablet"){
       display: none;
     }
-  }
-
-  .fade-enter-active,
-  .fade-leave-active {
-    transition: top .5s ease;
-  }
-
-  .fade-enter,
-  .fade-leave-to {
-    transition: all .5s ease;
   }
 </style>

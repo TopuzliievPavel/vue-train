@@ -1,20 +1,27 @@
 <template lang="pug">
   #app
-    Header(:image-path="require('./assets/img/logo.png')")
+    app-header(:image-path="require('./assets/img/logo.png')")
     main
       router-view
-    AppFooter
+    app-footer
 </template>
 
 <script>
-import Header from "./components/AppHeader"
+import AppHeader from "./components/AppHeader"
 import AppFooter from "./components/AppFooter"
+import PageAbout from "./pages/PageAbout";
 
 export default {
   name: "app",
+  data() {
+    return {
+      messages: [],
+    }
+  },
   components: {
-    AppFooter,
-    Header
+    PageAbout,
+    AppHeader,
+    AppFooter
   }
 }
 </script>

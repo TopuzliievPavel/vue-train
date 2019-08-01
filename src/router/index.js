@@ -1,10 +1,10 @@
 import Vue from "vue"
 import VueRouter from "vue-router"
-import Home from "@/pages/Home"
-import Content from "@/pages/Content"
-import About from "@/pages/About"
-import Contact from "@/pages/Contact"
-import Other from "@/pages/Other"
+import PageContent from "@/pages/PageContent"
+import PageAbout from "@/pages/PageAbout"
+import PageContact from "@/pages/PageContact"
+import PageOther from "@/pages/PageOther"
+import Home from "@/pages/PageHome"
 
 Vue.use(VueRouter);
 
@@ -12,28 +12,28 @@ export default new VueRouter({
   routes: [
     {
       path: "/",
-      name: "Home",
+      name: "page-home",
       component: Home
     },
     {
       path: "/content",
-      name: "Content",
-      component: Content
+      name: "page-content",
+      component: PageContent
     },
     {
       path: "/about",
-      name: "About",
-      component: About
+      name: "page-about",
+      component: PageAbout
     },
     {
       path: "/other",
-      name: "OtherLink",
-      component: Other
+      name: "page-other",
+      component: PageOther
     },
     {
       path: "/contact",
-      name: "Contact",
-      component: Contact
+      name: "page-contact",
+      component: PageContact
     }
   ],
   mode: "history"

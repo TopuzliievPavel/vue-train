@@ -28,6 +28,30 @@ export const store = new Vuex.Store({
           link: "/contact"
         }
       ]
+    },
+    cardItems() {
+     return  [
+       {
+         img: require("../assets/img/service01.png"),
+         title: "Foto bewerking",
+         content: "Lorem ipsum dolor sit amet, con sectetur apidiscing elit. Proin consequa lectus sed felis vulputate varius"
+       },
+       {
+         img: require("../assets/img/service02.png"),
+         title: "Illustratie",
+         content: "Lorem ipsum dolor sit amet, con sectetur apidiscing elit. Proin consequa lectus sed felis vulputate varius"
+       },
+       {
+         img: require("../assets/img/service03.png"),
+         title: "Video & animatie",
+         content: "Lorem ipsum dolor sit amet, con sectetur apidiscing elit."
+       },
+       {
+         img: require("../assets/img/service04.png"),
+         title: "3D animatie",
+         content: "Lorem ipsum dolor sit amet, con sectetur apidiscing elit. Proin consequa lectus sed felis vulputate varius"
+       }
+     ]
     }
   }
 });

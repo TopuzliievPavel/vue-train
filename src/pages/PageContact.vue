@@ -5,7 +5,7 @@
       p If you’re looking for technical support, have a billing question or complaint, then please use the contact form on the specific product.
       p If you’re looking for a strategic partnership with one of our properties, then please use the dedicated form on the specific product website.
       p If none of the above apply to you, then go ahead and use the contact form below. Someone will be in touch within a week.
-      form.contact-form(action="/")
+      form.contact-form(action="/" name="contact-from")
         .form-group
           label(htmlfor="exampleInputEmail")
             | Your name
@@ -26,13 +26,13 @@
             | Detailed message
             span.contact-star *
           textarea#textarea.form-control(name="textarea", cols="30", rows="4")
-        Button.btn.btn_theme_primary(title="Submit")
+        Button(title="Submit" class-name="btn btn_theme_primary")
 </template>
 
 <script>
   import Button from "../components/Button";
   export default {
-    name: "Contact",
+    name: "PageContact",
     components: {
       Button
     }

@@ -6,30 +6,32 @@
         li.social-list__item(
           v-for="(item, id) in socialItems"
           :key="id")
-          a.social-list__link(target="_blank")
+          a.social-list__link(target="_blank" :href="item.link")
             i(:class="item.icon")
 
 </template>
 
 <script>
   export default {
-    name: "AppFooter",
-    data: () => ({
-      socialItems: [
-        {
-          icon: "icon icon-twitter-logo",
-          link: "https://twitter.com/?lang=ru"
-        },
-        {
-          icon: "icon icon-facebook-logo",
-          link: "https://uk-ua.facebook.com/"
-        },
-        {
-          icon: "icon icon-button-play",
-          link: "https://www.youtube.com/"
-        }
-      ]
-    })
+    name: "app-footer",
+    computed: {
+      socialItems() {
+        return [
+          {
+            icon: "icon icon-twitter-logo",
+            link: "https://twitter.com/?lang=ru"
+          },
+          {
+            icon: "icon icon-facebook-logo",
+            link: "https://uk-ua.facebook.com/"
+          },
+          {
+            icon: "icon icon-button-play",
+            link: "https://www.youtube.com/"
+          }
+        ]
+      }
+    }
   }
 </script>
 
@@ -72,7 +74,7 @@
     font-size: 18px;
     text-align: center;
     line-height: 42px;
-    margin-left: 5px;
+    margin-left: 10px;
     border-radius: 50%;
     display: block;
     background-color: $primary;
