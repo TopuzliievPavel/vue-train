@@ -17,7 +17,7 @@
       .container.index-contact__wrap
         .box-form
           box-title(title="Text in the input must be show in the content page")
-          form.index-form(:action="url")
+          form.index-form(@submit.prevent)
             form-input(class-name="form-input index-form_input"
                       @message="addMessage")
             page-button(class-name="btn btn_active index-form_btn"
@@ -55,14 +55,21 @@
     },
     methods: {
       addMessage:  function (message) {
-        this.messages.push(message);
+        this.message = message;
+        this.changePages()
       },
       changePages: function () {
-        this.$router.push(this.url);
+        this.$router.push({
+          path: this.url,
+          query: {
+            message: this.message
+          }
+        });
       }
     },
     data() {
       return {
+        message: "",
         url: "/content",
         addressItems: [
           {

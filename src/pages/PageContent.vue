@@ -6,6 +6,9 @@
                   :messages="message")
       .software
         content-article
+          added-title(class-name="added-title"
+            v-for="message in messages"
+            :messages="message")
         content-aside(class-name="aside"
                       title="Some title"
                       cite="Leonardo da Vinci"
@@ -16,7 +19,7 @@
           box-title(title="Text in the input must be show in the content page")
           form.index-form(@submit.prevent)
             form-input(class-name="form-input content-form_input"
-                      @message="addMessage" :messages="addMessage")
+                      @message="addMessage")
             page-button(class-name="btn btn_active content-form_btn"
                         title="Send")
         .box-list
@@ -54,10 +57,15 @@
       PageButton,
       AddedTitle
     },
+    created () {
+      if (this.$route.query && this.$route.query.message) {
+        this.messages.push(this.$route.query.message)
+      }
+    },
     methods: {
       addMessage:  function (message) {
         this.messages.push(message);
-      }
+      },
     },
     data() {
       return {

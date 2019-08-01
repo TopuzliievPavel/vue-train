@@ -7,9 +7,7 @@
 </template>
 
 <script>
-  import FormInput from "../components/FormInput";
   export default {
     name: "PageOther",
-    components: {FormInput}
   }
 </script>
