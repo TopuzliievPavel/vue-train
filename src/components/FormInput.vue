@@ -15,7 +15,7 @@
       }
     },
     methods: {
-      saveMessage: function () {
+      saveMessage() {
         this.$emit("message", this.message);
         this.message = ""
       }
