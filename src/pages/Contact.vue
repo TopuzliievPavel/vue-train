@@ -5,24 +5,24 @@
       p If you’re looking for technical support, have a billing question or complaint, then please use the contact form on the specific product.
       p If you’re looking for a strategic partnership with one of our properties, then please use the dedicated form on the specific product website.
       p If none of the above apply to you, then go ahead and use the contact form below. Someone will be in touch within a week.
-      form.contact-form(action="/" name="contact-from")
+      form.contact-form(name="contact-from")
         .form-group
-          label(htmlfor="exampleInputEmail")
+          label(for="name")
             | Your name
             span.contact-star *
-          input#exampleInputEmail.form-control(type="email", aria-describedby="emailHelp")
+          input#name.form-control(type="text")
         .form-group
-          label(htmlfor="exampleInputPassword")
+          label(for="email")
             | Your email
             span.contact-star *
-          input#exampleInputPassword.form-control(type="password")
+          input#email.form-control(type="email")
         .form-group
-          label(htmlfor="exampleInputText")
+          label(for="text")
             | What are you thinking
             span.contact-star *
-          input#exampleInputText.form-control(type="text")
+          input#text.form-control(type="text")
         .form-group.form-check
-          label.form-check-label(htmlfor="textarea")
+          label.form-check-label(for="textarea")
             | Detailed message
             span.contact-star *
           textarea#textarea.form-control(name="textarea", cols="30", rows="4")
@@ -30,9 +30,10 @@
 </template>
 
 <script>
-  import Button from "../components/Button";
+  import Button from "../components/Button"
+
   export default {
-    name: "PageContact",
+    name: "page-contact",
     components: {
       Button
     }

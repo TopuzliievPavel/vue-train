@@ -4,6 +4,7 @@
 
 <script>
   export default {
+    name: "added-title",
     props: {
       messages: {
         type: String

@@ -1,17 +1,24 @@
 import Vue from "vue"
 import VueRouter from "vue-router"
-import PageContent from "@/pages/PageContent"
-import PageAbout from "@/pages/PageAbout"
-import PageContact from "@/pages/PageContact"
-import PageOther from "@/pages/PageOther"
-import Home from "@/pages/PageHome"
+import PageContent from "../pages/Content"
+import PageAbout from "../pages/About"
+import PageContact from "../pages/Contact"
+import PageOther from "../pages/Other"
+import Home from "../pages/Home"
+
 
 Vue.use(VueRouter);
 
 export default new VueRouter({
+  scrollBehavior(to, from) {
+    return {
+      x: 0,
+      y:0
+    }
+  },
   routes: [
     {
-      path: "/",
+      path: "",
       name: "page-home",
       component: Home
     },

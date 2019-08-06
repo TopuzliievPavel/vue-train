@@ -1,15 +1,36 @@
 <template lang="pug">
   .page-content
     .container
-      added-title(class-name="added-title"
-                  v-for="message in messages"
-                  :messages="message")
       .software
-        content-article
+        article.software__article
           added-title(class-name="added-title"
-            v-for="message in messages"
-            :messages="message")
-        content-aside(class-name="aside"
+                      v-for="message in messages"
+                      :messages="message")
+          .software__box
+            p
+              | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem cupiditate ea eligendi laborum libero
+              | maxime nihil numquam placeat totam ullam! Beatae, explicabo, minima! Assumenda et molestiae omnis quam omnis
+              | quam
+            p
+              | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem cupiditate ea eligendi laborum libero
+              | maxime nihil numquam placeat totam ullam! Beatae, explicabo, minima! Assumenda et molestiae omnis quam omnis
+              | quam
+            figure.software__figure
+              img(:src="img", :alt="alt")
+              figcaption Tussencop
+            p
+              | Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ad animi aspernatur consequatur deserunt
+              | dolores, dolorum fugiat harum inventore iste, laboriosam modi quam quisquam reiciendis vitae. Consequuntur
+              | delectus dicta distinctio error illo iste magni maxime molestias nostrum officia quas, quasi quibusdam quos,
+              | ratione repellat sed voluptatum. Corporis cum facere fuga necessitatibus optio perferendis perspiciatis
+              | sint, sit. Ab animi architecto asperiores, doloribus facere facilis laborum odio repellendus sequi sint
+              | tempore vel?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem cupiditate ea eligendi laborum
+              | libero maxime nihil numquam placeat totam ullam! Beatae, explicabo, minima! Assumenda et molestiae omnis
+              | quam, similique tenetur!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem cupiditate ea
+              | eligendi laborum libero maxime nihil numquam placeat totam ullam! Beatae, explicabo, minima! Assumenda et
+              | molestiae omnis quam, similique tenetur!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem
+              | cupiditate ea eligendi laborum libero maxime nihil numquam placeat totam ullam!
+        content-aside(class-name="content__aside"
                       title="Some title"
                       cite="Leonardo da Vinci"
                       description="Lorem ipsum dolor sit amet, consectetur adipisicing                          elit. Consequatur dolore ea incidunt praesentium quidem quos                              tempora. Ab aliquid distinctio, ducimus eius magnam obcaecati odio                        praesentium quae. Doloribus magnam nemo nihil?")
@@ -36,7 +57,6 @@
 </template>
 
 <script>
-  import ContentArticle from "../components/ContentArticle";
   import ContentAside from "../components/ContentAside";
   import ListGroup from "../components/ListGroup";
   import AddressGroup from "../components/AddressGroup";
@@ -48,7 +68,6 @@
   export default {
     name: "page-content",
     components: {
-      ContentArticle,
       ContentAside,
       FormInput,
       ListGroup,
@@ -69,7 +88,8 @@
     },
     data() {
       return {
-        msg: "",
+        img: require("../assets/img/train.jpg"),
+        alt: "Funny train",
         messages: [],
         addressItems: [
           {
@@ -119,6 +139,20 @@
     }
   }
 
+
+
+  .software__article {
+    padding-bottom: 0;
+    @include media(">=desktop") {
+      padding-bottom: 70px;
+    }
+  }
+
+  .software__figure {
+    margin: 0 0 20px;
+    line-height: 1.3;
+    color: $success;
+  }
 
 
 

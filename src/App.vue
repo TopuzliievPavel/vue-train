@@ -1,6 +1,6 @@
 <template lang="pug">
   #app
-    app-header(:image-path="require('./assets/img/logo.png')")
+    app-header(:image-path="require('./assets/img/logo.png')" class-name="app-header")
     main
       router-view
     app-footer
@@ -9,7 +9,6 @@
 <script>
 import AppHeader from "./components/AppHeader"
 import AppFooter from "./components/AppFooter"
-import PageAbout from "./pages/PageAbout";
 
 export default {
   name: "app",
@@ -19,7 +18,6 @@ export default {
     }
   },
   components: {
-    PageAbout,
     AppHeader,
     AppFooter
   }

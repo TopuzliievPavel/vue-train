@@ -19,7 +19,7 @@
   @import "../scss/base";
 
   // Aside content
-  .aside {
+  .content__aside {
     margin-bottom: 20px;
 
     @include media(">=desktop") {

@@ -1,6 +1,6 @@
 <template lang="pug">
   .home-page
-    section.visual
+    section.visual(:style="cssStyle")
       .visual__inner
         h1.visual__title Lorem ipsum dolor sit amet
         p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus accusantiumad, aliquam ametassumenda atque autem cumque debitis, earum est ipsa labore non praesentium quidem repudiandae tempore voluptates? Molestias, tempore, voluptatem.
@@ -51,7 +51,7 @@
       FormInput,
       ListGroup,
       AddressGroup,
-      BoxTitle,
+      BoxTitle
     },
     methods: {
       addMessage:  function (message) {
@@ -69,8 +69,10 @@
     },
     data() {
       return {
-        message: "",
         url: "/content",
+        cssStyle: {
+          backgroundImage: `url(${require("../assets/img/slide.jpg")})`
+        },
         addressItems: [
           {
             title: "Address:",
@@ -141,7 +143,7 @@
     justify-content: center;
     min-height: 100vh;
     padding: 80px 0;
-    background-image: url("../assets/img/slide.jpg");
+    /*background-image: url("../assets/img/slide.jpg");*/
     background-size: cover;
     background-position: 50% 50%;
     background-repeat: no-repeat;

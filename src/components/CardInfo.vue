@@ -5,7 +5,8 @@
     h4.card__title {{ cardItems.title }}
     .card__text
       p {{ cardItems.content }}
-    page-button(class-name="link card__link" title="Meer informatie")
+    page-button(class-name="link card__link"
+                title="Meer informatie")
 </template>
 
 <script>
@@ -13,6 +14,11 @@
 
   export default {
     name: "card-info",
+    data() {
+      return {
+        url: "/other",
+      }
+    },
     components: {
       PageButton
     },

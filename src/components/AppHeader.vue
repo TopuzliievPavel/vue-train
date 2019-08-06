@@ -2,42 +2,37 @@
   header.app-header(:class="{ 'active': showMenu }")
     button.menu-open(@click="showMenu = !showMenu")
       span.menu-open__line
-    menu-list(class="menu-list" :menuItems="menuItems")
+    ul(class="menu-list")
+      li.menu-list__item(v-for="(link, id) in menuLinks",
+        :key="id"
+        @click="showMenu = false")
+        router-link.menu-list__link(:to="link.url") {{ link.title }}
     router-link.logo(to="/")
       img(:src="imagePath", alt="SSA Group")
 </template>
 
 <script>
-  import MenuList from "./MenuList";
 
   export default {
-    name: "app-header",
-    components: {
-      MenuList
-    },
     data() {
       return {
         showMenu: false,
-        menuItems: [
+        menuLinks: [
           {
-            id: 1,
             title: "Content",
-            link: "/content"
+            url: "/content"
           },
           {
-            id: 2,
             title: "Other Link",
-            link: "/other"
+            url: "/other"
           },
           {
-            id: 3,
             title: "About Us",
-            link: "/about"
+            url: "/about"
           },
           {
-            id: 4,
             title: "Contact",
-            link: "/contact"
+            url: "/contact"
           }
         ]
       }
@@ -147,6 +142,23 @@
 
     @include media(">=tablet"){
       display: none;
+    }
+  }
+
+  .menu-list__item {
+    padding: 15px 10px;
+    font-size: 24px;
+    text-transform: capitalize;
+  }
+
+  .menu-list__link {
+    display: block;
+    color: $primary;
+    transition: color .3s;
+
+    &:hover,
+    &:focus {
+      color: $danger;
     }
   }
 </style>
