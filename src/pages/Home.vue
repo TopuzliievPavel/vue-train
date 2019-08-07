@@ -54,17 +54,25 @@
       BoxTitle
     },
     methods: {
-      addMessage:  function (message) {
+      addMessage(message) {
         this.message = message;
         this.changePages()
       },
-      changePages: function () {
+      changePages() {
         this.$router.push({
           path: this.url,
           query: {
             message: this.message
           }
         });
+      },
+      showDescription() {
+        this.$router.push({
+          path: "/other",
+          query: {
+            text: 12
+          }
+        })
       }
     },
     data() {
