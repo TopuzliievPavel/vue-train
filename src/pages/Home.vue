@@ -4,8 +4,11 @@
       .visual__inner
         h1.visual__title Lorem ipsum dolor sit amet
         p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus accusantiumad, aliquam ametassumenda atque autem cumque debitis, earum est ipsa labore non praesentium quidem repudiandae tempore voluptates? Molestias, tempore, voluptatem.
-        page-button(title="Download" class="btn btn_active visual__btn")
-        page-button(title="Meer informatie" class="link visual__btn")
+        page-button(title="Download"
+                    class="btn btn_active visual__btn")
+        page-button(title="Meer informatie"
+                    class="link visual__btn"
+                    @moveInformation="moveInformation")
     section.index-about
       .container
         h2.title Some title
@@ -17,9 +20,10 @@
       .container.index-contact__wrap
         .box-form
           box-title(title="Text in the input must be show in the content page")
-          form.index-form(@submit.prevent)
+          form.index-form(@submit.prevent="moveMessage")
             form-input(class-name="form-input index-form_input"
-                      @message="addMessage")
+                       :msg="message"
+                        @addLabel="message = $event")
             page-button(class-name="btn btn_active index-form_btn"
                         title="Send")
         .box-list
@@ -30,16 +34,22 @@
                       :listGroup="listItem")
         .box-list
           box-title(title="Contact")
-          address-group(v-for="(items, id) in addressItems"
-                        :key="id"
-                        :addressItems="items")
+          dl.address-list
+            dt.address-list__term Address:
+            dd.address-list__description
+              address Country City, Street 123
+            dt.address-list__term Telephone
+            dd.address-list__description
+              a.address-list__link(href="/") (123) 456 78 90
+            dt.address-list__term Email:
+            dd.address-list__description
+              a.address-list__link(href="/") somemail@mail.com
 </template>
 
 <script>
   import CardInfo from "../components/CardInfo";
-  import PageButton from "../components/Button";
+  import PageButton from "../components/PageButton";
   import ListGroup from "../components/ListGroup";
-  import AddressGroup from "../components/AddressGroup";
   import BoxTitle from "../components/BoxTitle";
   import FormInput from "../components/FormInput";
 
@@ -50,51 +60,17 @@
       PageButton,
       FormInput,
       ListGroup,
-      AddressGroup,
       BoxTitle
-    },
-    methods: {
-      addMessage(message) {
-        this.message = message;
-        this.changePages()
-      },
-      changePages() {
-        this.$router.push({
-          path: this.url,
-          query: {
-            message: this.message
-          }
-        });
-      },
-      showDescription() {
-        this.$router.push({
-          path: "/other",
-          query: {
-            text: 12
-          }
-        })
-      }
     },
     data() {
       return {
-        url: "/content",
+        message: "",
+        messages: [],
+        pageContent: "/content",
+        pageArticles: "/articles",
         cssStyle: {
           backgroundImage: `url(${require("../assets/img/slide.jpg")})`
         },
-        addressItems: [
-          {
-            title: "Address:",
-            path: "Country City, Street 123",
-          },
-          {
-            title: "Telephone",
-            path: "(123) 456 78 90"
-          },
-          {
-            title: "Email",
-            path: "someemail@mail.com"
-          }
-        ],
         listGroup: [
           {
             title: "Link 1",
@@ -136,6 +112,25 @@
           }
         ]
       }
+    },
+    methods: {
+      moveMessage() {
+        this.messages.push(this.message);
+        this.changePages()
+      },
+      changePages() {
+        this.$router.push({
+          path: this.pageContent,
+          query: {
+            message: this.message
+          }
+        });
+      },
+      moveInformation() {
+        this.$router.push({
+          path: this.pageContent
+        })
+      }
     }
   }
 </script>
@@ -150,8 +145,7 @@
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    padding: 80px 0;
-    /*background-image: url("../assets/img/slide.jpg");*/
+    /*padding: 80px 0;*/
     background-size: cover;
     background-position: 50% 50%;
     background-repeat: no-repeat;
@@ -259,6 +253,11 @@
 
   .box-list {
     margin-bottom: 40px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
     @include media(">=desktop") {
       max-width: 25%;
       flex: 0 0 25%;
@@ -282,4 +281,26 @@
   }
 
 
+  .address-list,
+  .address-list__description,
+  .address-list__term {
+    margin: 0;
+  }
+
+  .address-list__term {
+    text-transform: capitalize;
+    font-family: "RobotoBold", sans-serif;
+    line-height: 1.6;
+  }
+
+  .address-list__link {
+    transition: color .3s;
+    color: $primary;
+    font-family: "RobotoRegular", sans-serif;
+
+    &:hover,
+    &:focus {
+      color: $info;
+    }
+  }
 </style>

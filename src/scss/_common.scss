@@ -22,3 +22,13 @@ body {
   padding-left: 15px;
   padding-right: 15px;
 }
+
+.card__title,
+.address-list,
+.address-list__description,
+.list-group__item,
+h5 {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}

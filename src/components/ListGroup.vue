@@ -1,6 +1,6 @@
 <template lang="pug">
   li.list-group__item
-    a.list-group__link(target="_blank" :href="listGroup.link") {{ listGroup.title }}
+    a.list-group__link(:href="listGroup.link") {{ listGroup.title }}
 </template>
 
 <script>

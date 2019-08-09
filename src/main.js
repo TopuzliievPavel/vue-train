@@ -7,6 +7,8 @@ import App from "./App"
 Vue.use(VueResource);
 Vue.config.productionTip = false;
 
+export const eventEmitter = new Vue();
+
 new Vue({
   store,
   router,

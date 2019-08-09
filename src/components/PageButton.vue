@@ -1,16 +1,28 @@
 <template lang="pug">
-  button(:class="className") {{ title }}
+  button(:class="className" @click="moveInformation") {{ title }}
 </template>
 
 <script>
   export default {
     name: "page-button",
+    data() {
+      return {
+        description: ""
+      }
+    },
     props: {
       title: {
         type: String
       },
       className: {
         type: String
+      }
+    },
+    methods: {
+      moveInformation() {
+        this.$emit("moveInformation");
+        this.$emit("showDescription");
+        this.$emit("sortArticles");
       }
     }
   }
@@ -55,6 +67,17 @@
       display: inline-block;
       vertical-align: top;
       margin: 0 5px;
+    }
+  }
+
+  .btn_theme_primary {
+    background-color: $primary;
+    border-color: $primary;
+    width: 100%;
+
+    @include media(">=tablet") {
+      width: auto;
+      margin: 0;
     }
   }
 </style>

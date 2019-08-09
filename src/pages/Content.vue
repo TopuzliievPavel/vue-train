@@ -16,7 +16,7 @@
               | maxime nihil numquam placeat totam ullam! Beatae, explicabo, minima! Assumenda et molestiae omnis quam omnis
               | quam
             figure.software__figure
-              img(:src="img", :alt="alt")
+              img(:src="img", alt="Funny train")
               figcaption Tussencop
             p
               | Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ad animi aspernatur consequatur deserunt
@@ -38,9 +38,10 @@
       .container.index-contact__wrap
         .box-form
           box-title(title="Text in the input must be show in the content page")
-          form.index-form(@submit.prevent)
+          form.index-form(@submit.prevent="addMessage")
             form-input(class-name="form-input content-form_input"
-                      @message="addMessage")
+                      :msg="message"
+                      @addLabel="message = $event")
             page-button(class-name="btn btn_active content-form_btn"
                         title="Send")
         .box-list
@@ -51,18 +52,21 @@
                       :listGroup="listItem")
         .box-list
           box-title(title="Contact")
-          address-group(v-for="(items, id) in addressItems"
-                      :key="id"
-                      :addressItems="items")
+          dl.address-list
+            dt.address-list__term Address:
+            dd.address-list__description
+              address Country City, Street 123
+            dt.address-list__term Telephone
+            dd.address-list__description
+              a.address-list__link(href="/" target="_blank") (123) 456 78 90
 </template>
 
 <script>
   import ContentAside from "../components/ContentAside";
   import ListGroup from "../components/ListGroup";
-  import AddressGroup from "../components/AddressGroup";
   import BoxTitle from "../components/BoxTitle";
   import FormInput from "../components/FormInput";
-  import PageButton from "../components/Button";
+  import PageButton from "../components/PageButton";
   import AddedTitle from "../components/AddedTitle";
 
   export default {
@@ -71,26 +75,15 @@
       ContentAside,
       FormInput,
       ListGroup,
-      AddressGroup,
       BoxTitle,
       PageButton,
       AddedTitle
     },
-    created () {
-      if (this.$route.query && this.$route.query.message) {
-        this.messages.push(this.$route.query.message)
-      }
-    },
-    methods: {
-      addMessage:  function (message) {
-        this.messages.push(message);
-      },
-    },
     data() {
       return {
         img: require("../assets/img/train.jpg"),
-        alt: "Funny train",
         messages: [],
+        message: "",
         addressItems: [
           {
             title: "Address:",
@@ -120,6 +113,17 @@
           }
         ],
       }
+    },
+    created () {
+      if (this.$route.query.message) {
+        this.messages.push(this.$route.query.message)
+      }
+    },
+    methods: {
+      addMessage() {
+        this.messages.push(this.message);
+        this.message = ""
+      },
     }
   }
 </script>
@@ -138,7 +142,6 @@
       flex: 1 1 100%;
     }
   }
-
 
 
   .software__article {
@@ -200,5 +203,27 @@
     border-radius: 5px 0 0 5px;
   }
 
+  .address-list,
+  .address-list__description,
+  .address-list__term {
+    margin: 0;
+  }
+
+  .address-list__term {
+    text-transform: capitalize;
+    font-family: "RobotoBold", sans-serif;
+    line-height: 1.6;
+  }
+
+  .address-list__link {
+    transition: color .3s;
+    color: $primary;
+    font-family: "RobotoRegular", sans-serif;
+
+    &:hover,
+    &:focus {
+      color: $info;
+    }
+  }
 
 </style>

@@ -6,7 +6,7 @@
         li.social-list__item(
           v-for="(item, id) in socialItems"
           :key="id")
-          a.social-list__link(target="_blank" :href="item.link")
+          a.social-list__link(:href="item.link")
             i(:class="item.icon")
 
 </template>
@@ -44,7 +44,6 @@
     line-height: 1.3;
 
     p {
-      margin-bottom: 1em;
       @include media(">=tablet") {
         margin-bottom: 0;
       }

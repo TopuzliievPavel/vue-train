@@ -3,7 +3,7 @@
     button.menu-open(@click="showMenu = !showMenu")
       span.menu-open__line
     ul(class="menu-list")
-      li.menu-list__item(v-for="(link, id) in menuLinks",
+      li.menu-list__item(v-for="(link, id) in menuLinks"
         :key="id"
         @click="showMenu = false")
         router-link.menu-list__link(:to="link.url") {{ link.title }}
@@ -23,8 +23,8 @@
             url: "/content"
           },
           {
-            title: "Other Link",
-            url: "/other"
+            title: "Articles",
+            url: "/articles"
           },
           {
             title: "About Us",
@@ -33,6 +33,10 @@
           {
             title: "Contact",
             url: "/contact"
+          },
+          {
+            title: "test",
+            url: "/test"
           }
         ]
       }

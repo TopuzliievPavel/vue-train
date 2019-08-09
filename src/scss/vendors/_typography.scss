@@ -77,6 +77,16 @@ h6 {
 
 .title {
   text-align: center;
+  font-size: 28px;
+  @include media(">=tablet") {
+    font-size: 34px;
+  }
+  @include media(">=desktop") {
+    font-size: 44px;
+  }
+  @include media(">=widescreen") {
+    font-size: 64px;
+  }
 }
 
 p {

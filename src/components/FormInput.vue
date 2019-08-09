@@ -2,8 +2,8 @@
   input(type="text"
         :class="className"
         placeholder="Some text"
-        v-model="message"
-        @keyup.enter="saveMessage")
+        :value="msg"
+        @input="changeMessage")
 </template>
 
 <script>
@@ -11,18 +11,19 @@
     name: "form-input",
     data() {
       return {
-        message: ""
-      }
-    },
-    methods: {
-      saveMessage() {
-        this.$emit("message", this.message);
-        this.message = ""
+        valueInput: ""
       }
     },
     props: {
+      msg: String,
       className: {
         type: String
+      }
+    },
+    methods: {
+      changeMessage(event) {
+        this.valueInput = event.target.value;
+        this.$emit("addLabel", this.valueInput);
       }
     }
   }

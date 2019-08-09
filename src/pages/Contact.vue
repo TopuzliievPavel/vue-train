@@ -26,21 +26,21 @@
             | Detailed message
             span.contact-star *
           textarea#textarea.form-control(name="textarea", cols="30", rows="4")
-        Button(title="Submit" class-name="btn btn_theme_primary")
+        page-button(title="Submit" class-name="btn btn_theme_primary")
 </template>
 
 <script>
-  import Button from "../components/Button"
+  import PageButton from "../components/PageButton"
 
   export default {
     name: "page-contact",
     components: {
-      Button
+      PageButton
     }
   }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
   @import "../scss/base";
 
   .contact-main {
@@ -70,16 +70,6 @@
     color: $primary;
   }
 
-  .btn_theme_primary {
-    background-color: $primary;
-    border-color: $primary;
-    width: 100%;
-
-    @include media(">=tablet") {
-      width: auto;
-    }
-  }
-
   .form-group {
     display: flex;
     flex-direction: column;
@@ -92,14 +82,13 @@
     }
   }
 
-  textarea,
+  textarea.form-control,
   input.form-control {
     padding: 10px;
     border-radius: 4px;
     background-color: $base-color;
     box-shadow: inset 0 2px 2px 0 rgba(126, 133, 174, 0.16);
     border: solid 1px #dfe2f7;
-    max-width: 100%;
     font-size: 16px;
     color: $primary;
   }
