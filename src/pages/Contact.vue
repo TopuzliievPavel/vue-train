@@ -10,17 +10,17 @@
           label(for="name")
             | Your name
             span.contact-star *
-          input#name.form-control(type="text")
+          form-input#name(class-name="form-control" type="text")
         .form-group
           label(for="email")
             | Your email
             span.contact-star *
-          input#email.form-control(type="email")
+          form-input#email(class-name="form-control" type="email")
         .form-group
           label(for="text")
             | What are you thinking
             span.contact-star *
-          input#text.form-control(type="text")
+          form-input#text(class-name="form-control" type="text")
         .form-group.form-check
           label.form-check-label(for="textarea")
             | Detailed message
@@ -30,11 +30,13 @@
 </template>
 
 <script>
-  import PageButton from "../components/PageButton"
+  import PageButton from "../components/BaseButton"
+  import FormInput from "../components/FormInput";
 
   export default {
     name: "page-contact",
     components: {
+      FormInput,
       PageButton
     }
   }
@@ -82,8 +84,7 @@
     }
   }
 
-  textarea.form-control,
-  input.form-control {
+  .form-control {
     padding: 10px;
     border-radius: 4px;
     background-color: $base-color;

@@ -4,27 +4,28 @@
       .visual__inner
         h1.visual__title Lorem ipsum dolor sit amet
         p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus accusantiumad, aliquam ametassumenda atque autem cumque debitis, earum est ipsa labore non praesentium quidem repudiandae tempore voluptates? Molestias, tempore, voluptatem.
-        page-button(title="Download"
+        base-button(title="Download"
                     class="btn btn_active visual__btn")
-        page-button(title="Meer informatie"
+        base-button(title="Meer informatie"
                     class="link visual__btn"
-                    @moveInformation="moveInformation")
+                    @moveInformation="moveToInformation")
     section.index-about
       .container
         h2.title Some title
         .about-list
-          card-info(v-for="(card, id) in cardItems"
-                    :key="id"
+          card-blog(v-for="card in cardItems"
+                    :key="cardItems.id"
                     :cardItems="card")
-    section.index-contact
-      .container.index-contact__wrap
+    section.section-contact
+      .section-contact__wrap
         .box-form
           box-title(title="Text in the input must be show in the content page")
-          form.index-form(@submit.prevent="moveMessage")
-            form-input(class-name="form-input index-form_input"
+          form.section-contact-form(@submit.prevent="moveMessage")
+            form-input(class-name="form-input"
                        :msg="message"
+                        placeholder="Some text"
                         @addLabel="message = $event")
-            page-button(class-name="btn btn_active index-form_btn"
+            base-button(class-name="btn btn_active section-contact_btn"
                         title="Send")
         .box-list
           box-title(title="Community")
@@ -47,8 +48,8 @@
 </template>
 
 <script>
-  import CardInfo from "../components/CardInfo";
-  import PageButton from "../components/PageButton";
+  import CardBlog from "../components/CardBlog";
+  import BaseButton from "../components/BaseButton";
   import ListGroup from "../components/ListGroup";
   import BoxTitle from "../components/BoxTitle";
   import FormInput from "../components/FormInput";
@@ -56,8 +57,8 @@
   export default {
     name: "page-home",
     components: {
-      CardInfo,
-      PageButton,
+      CardBlog,
+      BaseButton,
       FormInput,
       ListGroup,
       BoxTitle
@@ -67,7 +68,6 @@
         message: "",
         messages: [],
         pageContent: "/content",
-        pageArticles: "/articles",
         cssStyle: {
           backgroundImage: `url(${require("../assets/img/slide.jpg")})`
         },
@@ -91,24 +91,29 @@
         ],
         cardItems: [
           {
+            id: 1,
             img: require("../assets/img/service01.png"),
             title: "Foto bewerking",
-            content: "Lorem ipsum dolor sit amet, con sectetur apidiscing elit. Proin consequa lectus sed felis vulputate varius"
+            shortDescription:
+              "Lorem ipsum dolor sit amet, con sectetur apidiscing elit. Proin consequa lectus sed felis vulputate varius"
           },
           {
+            id: 2,
             img: require("../assets/img/service02.png"),
             title: "Illustratie",
-            content: "Lorem ipsum dolor sit amet, con sectetur apidiscing elit. Proin consequa lectus sed felis vulputate varius"
+            shortDescription: "Lorem ipsum dolor sit amet, con sectetur apidiscing elit. Proin consequa lectus sed felis vulputate varius"
           },
           {
+            id: 3,
             img: require("../assets/img/service03.png"),
             title: "Video & animatie",
-            content: "Lorem ipsum dolor sit amet, con sectetur apidiscing elit."
+            shortDescription: "Cursus vitae congue mauris rhoncus aenean vel."
           },
           {
+            id: 4,
             img: require("../assets/img/service04.png"),
             title: "3D animatie",
-            content: "Lorem ipsum dolor sit amet, con sectetur apidiscing elit. Proin consequa lectus sed felis vulputate varius"
+            shortDescription: "Lorem ipsum dolor sit amet, con sectetur apidiscing elit. Proin consequa lectus sed felis vulputate varius"
           }
         ]
       }
@@ -126,7 +131,7 @@
           }
         });
       },
-      moveInformation() {
+      moveToInformation() {
         this.$router.push({
           path: this.pageContent
         })
@@ -135,7 +140,7 @@
   }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
   @import "../scss/base";
 
   /*---------------------------Visual-------------------------*/
@@ -228,15 +233,17 @@
     }
   }
 
-
-
   /*------------------------Index-Contact-------------------*/
-  .index-contact {
+  .section-contact {
     background-color: $success;
     padding: 60px 0;
   }
 
-  .index-contact__wrap {
+  .section-contact__wrap {
+    max-width: 1170px;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin: 0 auto;
     @include media(">=desktop") {
       display: flex;
     }
@@ -266,20 +273,9 @@
     }
   }
 
-  .index-form {
+  .section-contact-form {
     display: flex;
   }
-
-  .index-form_btn {
-    margin: 0;
-    border-radius: 0 5px 5px 0;
-  }
-
-  .index-form_input {
-    border-right: transparent;
-    border-radius: 5px 0 0 5px;
-  }
-
 
   .address-list,
   .address-list__description,

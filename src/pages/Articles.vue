@@ -2,13 +2,12 @@
   section.other
     .other__wrap
       article.other__article
-        transition-group(name="fade")
-          .article-list(v-for="(article, index) of filteredTitles"
-            :key="index")
-            .article-list__content
-              h6.article-list__title {{ article.title }}
-              p {{ article.description }}
-              button.button-close(@click.prevent="deleteArticle(index)")
+        .article-list(v-for="(article, index) of filteredArticles"
+          :key="index")
+          .article-list__content
+            h6.article-list__title {{ article.title }}
+            p {{ article.description }}
+            button.button-close(@click.prevent="deleteArticle(index)")
       aside.other__aside
         form.article-form(@submit.prevent)
           input.article-form__field(type="text"
@@ -22,7 +21,7 @@
                                       placeholder="Write description"
                                       v-model="articleDescription"
                                       @keyup.enter="newArticle")
-          page-button(class-name="btn btn_theme_primary"
+          base-button(class-name="btn btn_theme_primary"
                       title="sort"
                       :style="style"
                       @sortArticles="sortArticles")
@@ -30,17 +29,20 @@
 
 <script>
 
-  import PageButton from "../components/PageButton";
+  import BaseButton from "../components/BaseButton";
+  import FormInput from "../components/FormInput";
   export default {
     name: "page-articles",
     components: {
-      PageButton
+      FormInput,
+      BaseButton
     },
     data () {
       return {
         articleId: 5,
         articleTitle: "",
         filteredTitle: "",
+        cards: [],
         articleDescription: "",
         style: {
           textTransform: "uppercase"
@@ -91,14 +93,6 @@
       deleteArticle(index) {
         this.articles.splice(index, 1)
       },
-      changePages() {
-        this.$router.push({
-          path: "/",
-          query: {
-            filteredTitle: this.filteredTitle
-          }
-        })
-      },
       sortArticles() {
         this.articles.sort(function (a, b) {
           if (a > b) {
@@ -110,7 +104,7 @@
       }
     },
     computed: {
-      filteredTitles() {
+      filteredArticles() {
         return this.articles.filter(article => {
           return article.title.toLowerCase().indexOf(this.filteredTitle.toLowerCase()) > -1;
         })
@@ -222,12 +216,5 @@
         color: transparent;
       }
     }
-  }
-
-  .fade-enter-active, .fade-leave-active {
-    transition: opacity 1s;
-  }
-  .fade-enter, .fade-leave-to /* .fade-leave-active до версии 2.1.8 */ {
-    opacity: 0;
   }
 </style>

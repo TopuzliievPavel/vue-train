@@ -1,7 +1,7 @@
 <template lang="pug">
-  input(type="text"
+  input(:type="type"
         :class="className"
-        placeholder="Some text"
+        :placeholder="placeholder"
         :value="msg"
         @input="changeMessage")
 </template>
@@ -15,7 +15,9 @@
       }
     },
     props: {
+      type: String,
       msg: String,
+      placeholder: String,
       className: {
         type: String
       }
@@ -40,7 +42,8 @@
     border: solid 2px currentColor;
     font-size: 14px;
 
-    border-radius: 5px;
+    border-right: transparent;
+    border-radius: 5px 0 0 5px;
 
     &::placeholder {
       color: $primary;
@@ -55,5 +58,15 @@
     @media screen and (min-width: 768px) {
       font-size: 24px;
     }
+  }
+
+  input.form-control {
+    padding: 10px;
+    border-radius: 4px;
+    background-color: $base-color;
+    box-shadow: inset 0 2px 2px 0 rgba(126, 133, 174, 0.16);
+    border: solid 1px #dfe2f7;
+    font-size: 16px;
+    color: $primary;
   }
 </style>

@@ -5,6 +5,7 @@ import PageAbout from "../pages/About"
 import PageContact from "../pages/Contact"
 import PageArticles from "../pages/Articles"
 import Home from "../pages/Home"
+import PageBlog from "../pages/Blog"
 import PageTest from "../pages/Test"
 
 
@@ -19,7 +20,7 @@ export default new VueRouter({
   },
   routes: [
     {
-      path: "",
+      path: "/",
       name: "page-home",
       component: Home
     },
@@ -48,6 +49,11 @@ export default new VueRouter({
       name: "page-test",
       component: PageTest
     },
+    {
+      path: "/blog/:id",
+      name: "page-blog",
+      component: PageBlog
+    }
   ],
   mode: "history"
 })

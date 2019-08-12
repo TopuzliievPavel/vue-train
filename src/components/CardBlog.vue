@@ -4,40 +4,39 @@
       img(:src="cardItems.img" alt="SSA Group")
     h4.card__title {{ cardItems.title }}
     .card__text
-      p {{ cardItems.content }}
-    page-button(class-name="link card__link"
+      p {{ cardItems.shortDescription }}
+    base-button(class-name="link card__link"
                 title="Meer informatie"
                 @showDescription="showDescription")
 </template>
 
 <script>
-  import PageButton from "./PageButton"
+  import BaseButton from "./BaseButton"
 
   export default {
     name: "card-info",
     data() {
       return {
-        pageOther: "/articles",
-        articles: []
+        pageArticles: "/articles",
+        pageBlog: "/blog/:id"
       }
     },
     components: {
-      PageButton
+      BaseButton
     },
     props: {
       cardItems: {
         type: Object
       }
     },
-    created() {
-      if (this.$route.query.filteredTitle) {
-        this.articles.push(this.$route.query.filteredTitle)
-      }
-    },
     methods: {
       showDescription() {
         this.$router.push({
-          path: "articles"
+          name: "page-blog",
+          path: this.pageBlog,
+          params: {
+            id: this.cardItems.id
+          }
         })
       }
     }

@@ -4,7 +4,7 @@
 
 <script>
   export default {
-    name: "page-button",
+    name: "base-button",
     data() {
       return {
         description: ""
@@ -23,6 +23,7 @@
         this.$emit("moveInformation");
         this.$emit("showDescription");
         this.$emit("sortArticles");
+        this.$emit("backToHome")
       }
     }
   }
@@ -79,5 +80,10 @@
       width: auto;
       margin: 0;
     }
+  }
+
+  .section-contact_btn {
+    margin: 0;
+    border-radius: 0 5px 5px 0;
   }
 </style>

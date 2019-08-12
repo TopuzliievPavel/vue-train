@@ -1,16 +1,10 @@
-<template>
-  <div>
-    <h2>{{ title }}</h2>
-  </div>
+<template lang="pug">
+  .test
+    h2 Test
 </template>
 
 <script>
   export default {
-    name: "page-test",
-    data() {
-      return {
-        title: "Test"
-      }
-    }
+    name: "page-test"
   }
 </script>
