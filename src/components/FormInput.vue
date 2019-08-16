@@ -1,9 +1,5 @@
 <template lang="pug">
-  input(:type="type"
-        :class="className"
-        :placeholder="placeholder"
-        :value="msg"
-        @input="changeMessage")
+  input(@input="changeMessage")
 </template>
 
 <script>
@@ -14,18 +10,10 @@
         valueInput: ""
       }
     },
-    props: {
-      type: String,
-      msg: String,
-      placeholder: String,
-      className: {
-        type: String
-      }
-    },
     methods: {
       changeMessage(event) {
         this.valueInput = event.target.value;
-        this.$emit("addLabel", this.valueInput);
+        this.$emit("add-label", this.valueInput);
       }
     }
   }
@@ -40,10 +28,10 @@
 
     background: transparent;
     border: solid 2px currentColor;
-    font-size: 14px;
-
     border-right: transparent;
     border-radius: 5px 0 0 5px;
+
+    font-size: 14px;
 
     &::placeholder {
       color: $primary;
@@ -62,10 +50,12 @@
 
   input.form-control {
     padding: 10px;
+
     border-radius: 4px;
     background-color: $base-color;
     box-shadow: inset 0 2px 2px 0 rgba(126, 133, 174, 0.16);
     border: solid 1px #dfe2f7;
+
     font-size: 16px;
     color: $primary;
   }

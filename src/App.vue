@@ -7,8 +7,8 @@
 </template>
 
 <script>
-  import AppHeader from "./components/TheHeader"
-  import AppFooter from "./components/TheFooter"
+  import AppHeader from "./components/TheHeader";
+  import AppFooter from "./components/TheFooter";
 
   export default {
     name: "app",
@@ -33,7 +33,7 @@
 
   .main {
     flex: 1 0 auto;
-    padding-top: 70px;
+    padding-top: 74px;
     @include media(">=tablet") {
       padding-top: 78px;
     }

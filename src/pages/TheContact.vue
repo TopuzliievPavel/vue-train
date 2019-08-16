@@ -5,39 +5,39 @@
       p If you’re looking for technical support, have a billing question or complaint, then please use the contact form on the specific product.
       p If you’re looking for a strategic partnership with one of our properties, then please use the dedicated form on the specific product website.
       p If none of the above apply to you, then go ahead and use the contact form below. Someone will be in touch within a week.
-      form.contact-form(name="contact-from")
+      form.contact-form(name="contact-form")
         .form-group
-          label(for="name")
+          label(for="person-name")
             | Your name
             span.contact-star *
-          form-input#name(class-name="form-control" type="text")
+          form-input#person-name.form-control(name="person-name" type="text")
         .form-group
-          label(for="email")
+          label(for="person-email")
             | Your email
             span.contact-star *
-          form-input#email(class-name="form-control" type="email")
+          form-input#person-email.form-control(name="person-email" type="email")
         .form-group
-          label(for="text")
+          label(for="person-thinking")
             | What are you thinking
             span.contact-star *
-          form-input#text(class-name="form-control" type="text")
-        .form-group.form-check
-          label.form-check-label(for="textarea")
+          form-input#person-thinking.form-control(name="person-thinking" type="text")
+        .form-group
+          label(for="person-detail")
             | Detailed message
             span.contact-star *
-          textarea#textarea.form-control(name="textarea", cols="30", rows="4")
-        page-button(title="Submit" class-name="btn btn_theme_primary")
+          textarea#person-detail.form-control(name="person-detail" cols="30", rows="4")
+        base-button.btn.btn_theme_primary(title="Submit")
 </template>
 
 <script>
-  import PageButton from "../components/BaseButton"
+  import BaseButton from "../components/BaseButton"
   import FormInput from "../components/FormInput";
 
   export default {
     name: "page-contact",
     components: {
       FormInput,
-      PageButton
+      BaseButton
     }
   }
 </script>
@@ -54,12 +54,14 @@
   }
 
   .contact-form {
-    padding: 20px;
-    box-shadow: 0 8px 12px rgba(14, 36, 129, 0.08);
     max-width: 700px;
+    padding: 20px;
     margin: 0 auto;
+
     border-radius: 6px;
     background-color: $base-color;
+    box-shadow: 0 8px 12px rgba(14, 36, 129, 0.08);
+
     text-align: left;
 
     @include media(">=tablet") {
@@ -76,6 +78,7 @@
     display: flex;
     flex-direction: column;
     margin-bottom: 10px;
+
     text-transform: capitalize;
     font-size: $size-xs;
 
@@ -86,10 +89,12 @@
 
   .form-control {
     padding: 10px;
+
     border-radius: 4px;
     background-color: $base-color;
     box-shadow: inset 0 2px 2px 0 rgba(126, 133, 174, 0.16);
     border: solid 1px #dfe2f7;
+
     font-size: 16px;
     color: $primary;
   }

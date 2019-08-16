@@ -3,54 +3,51 @@
     .container
       .software
         article.software__article
-          added-title(class-name="added-title"
-                      v-for="message in messages"
-                      :messages="message")
-          .software__box
-            p
-              | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem cupiditate ea eligendi laborum libero
-              | maxime nihil numquam placeat totam ullam! Beatae, explicabo, minima! Assumenda et molestiae omnis quam omnis
-              | quam
-            p
-              | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem cupiditate ea eligendi laborum libero
-              | maxime nihil numquam placeat totam ullam! Beatae, explicabo, minima! Assumenda et molestiae omnis quam omnis
-              | quam
-            figure.software__figure
-              img(:src="img", alt="Funny train")
-              figcaption Tussencop
-            p
-              | Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ad animi aspernatur consequatur deserunt
-              | dolores, dolorum fugiat harum inventore iste, laboriosam modi quam quisquam reiciendis vitae. Consequuntur
-              | delectus dicta distinctio error illo iste magni maxime molestias nostrum officia quas, quasi quibusdam quos,
-              | ratione repellat sed voluptatum. Corporis cum facere fuga necessitatibus optio perferendis perspiciatis
-              | sint, sit. Ab animi architecto asperiores, doloribus facere facilis laborum odio repellendus sequi sint
-              | tempore vel?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem cupiditate ea eligendi laborum
-              | libero maxime nihil numquam placeat totam ullam! Beatae, explicabo, minima! Assumenda et molestiae omnis
-              | quam, similique tenetur!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem cupiditate ea
-              | eligendi laborum libero maxime nihil numquam placeat totam ullam! Beatae, explicabo, minima! Assumenda et
-              | molestiae omnis quam, similique tenetur!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem
-              | cupiditate ea eligendi laborum libero maxime nihil numquam placeat totam ullam!
-        content-aside(class-name="content__aside"
-                      title="Some title"
-                      cite="Leonardo da Vinci"
-                      description="Lorem ipsum dolor sit amet, consectetur adipisicing                          elit. Consequatur dolore ea incidunt praesentium quidem quos                              tempora. Ab aliquid distinctio, ducimus eius magnam obcaecati odio                        praesentium quae. Doloribus magnam nemo nihil?")
+          added-title.added-title(v-for="(message, id) in messages"
+                                  :key="id"
+                                  :send-message="message")
+          p
+            | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem cupiditate ea eligendi laborum libero
+            | maxime nihil numquam placeat totam ullam! Beatae, explicabo, minima! Assumenda et molestiae omnis quam omnis
+            | quam
+          p
+            | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem cupiditate ea eligendi laborum libero
+            | maxime nihil numquam placeat totam ullam! Beatae, explicabo, minima! Assumenda et molestiae omnis quam omnis
+            | quam
+          figure.software__figure
+            img(:src="img", alt="Funny train")
+            figcaption Tussencop
+          p
+            | Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ad animi aspernatur consequatur deserunt
+            | dolores, dolorum fugiat harum inventore iste, laboriosam modi quam quisquam reiciendis vitae. Consequuntur
+            | delectus dicta distinctio error illo iste magni maxime molestias nostrum officia quas, quasi quibusdam quos,
+            | ratione repellat sed voluptatum. Corporis cum facere fuga necessitatibus optio perferendis perspiciatis
+            | sint, sit. Ab animi architecto asperiores, doloribus facere facilis laborum odio repellendus sequi sint
+            | tempore vel?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem cupiditate ea eligendi laborum
+            | libero maxime nihil numquam placeat totam ullam! Beatae, explicabo, minima! Assumenda et molestiae omnis
+            | quam, similique tenetur!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem cupiditate ea
+            | eligendi laborum libero maxime nihil numquam placeat totam ullam! Beatae, explicabo, minima! Assumenda et
+            | molestiae omnis quam, similique tenetur!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem
+            | cupiditate ea eligendi laborum libero maxime nihil numquam placeat totam ullam!
+        content-aside.content__aside(title="Some title"
+                                    cite="Leonardo da Vinci"
+                                    description="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur dolore ea incidunt praesentium quidem quos tempora. Ab aliquid distinctio, ducimus eius magnam obcaecati odio praesentium quae. Doloribus magnam nemo nihil?")
     section.section-contact
       .section-contact__wrap
         .box-form
           box-title(title="Text in the input must be show in the content page")
           form.section-contact-form(@submit.prevent="addMessage")
-            form-input(class-name="form-input section-contact_input"
-                      :msg="message"
-                      placeholder="Some text"
-                      @addLabel="message = $event")
-            base-button(class-name="btn btn_active section-contact_btn"
-                        title="Send")
+            form-input.form-input(type="text"
+                                  name="message"
+                                  placeholder="Some text"
+                                  @add-label="message = $event")
+            base-button.btn.btn_active.btn_rounded(title="Send")
         .box-list
           box-title(title="Community")
           ul.list-group
             list-group(v-for="(listItem, id) in listGroup"
                       :key="id"
-                      :listGroup="listItem")
+                      :list-group="listItem")
         .box-list
           box-title(title="Contact")
           dl.address-list
@@ -59,7 +56,7 @@
               address Country City, Street 123
             dt.address-list__term Telephone
             dd.address-list__description
-              a.address-list__link(href="/") (123) 456 78 90
+              a.address-list__link(href="tel:telephone") {{ telephone }}
 </template>
 
 <script>
@@ -68,7 +65,7 @@
   import BoxTitle from "../components/BoxTitle";
   import FormInput from "../components/FormInput";
   import BaseButton from "../components/BaseButton";
-  import AddedTitle from "../components/AddedTitle";
+  import AddedTitle from "../components/AddTitle";
 
   export default {
     name: "page-content",
@@ -85,6 +82,7 @@
         img: require("../assets/img/train.jpg"),
         messages: [],
         message: "",
+        telephone: "(123) 456 78 90",
         addressItems: [
           {
             title: "Address:",
@@ -123,8 +121,13 @@
     methods: {
       addMessage() {
         this.messages.push(this.message);
+        this.$router.push({
+          query: {
+            message: this.message
+          }
+        });
         this.message = ""
-      },
+      }
     }
   }
 </script>
@@ -138,22 +141,17 @@
     }
   }
 
-  .software__box {
-    @include media(">=desktop") {
-      flex: 1 1 100%;
-    }
-  }
-
-
   .software__article {
     padding-bottom: 0;
     @include media(">=desktop") {
       padding-bottom: 70px;
+      flex: 1 1 100%;
     }
   }
 
   .software__figure {
     margin: 0 0 20px;
+
     line-height: 1.3;
     color: $success;
   }

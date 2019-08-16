@@ -6,14 +6,14 @@
 @import "fonts/icons";
 
 html {
-  font-size: 20px;
-  line-height: 2;
+  font-size: $base-font-size;
+  line-height: $base-line-height;
 }
 
 body {
-  font-family: "RobotoRegular", Helvetica, sans-serif;
-  min-width: 320px;
-  color: $primary;
+  font-family: $base-font-family;
+  min-width: $base-min-width;
+  color: $base-text-color;
 }
 
 .container {
@@ -23,12 +23,3 @@ body {
   padding-right: 15px;
 }
 
-.card__title,
-.address-list,
-.address-list__description,
-.list-group__item,
-h5 {
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
-}

@@ -1,5 +1,5 @@
 <template lang="pug">
-  h5(:class="className") {{ title }}
+  h5 {{ title }}
 </template>
 
 <script>
@@ -8,9 +8,6 @@
     props: {
       title: {
         type: [String, Number]
-      },
-      className: {
-        type: String
       }
     }
   }

@@ -1,5 +1,5 @@
 <template lang="pug">
-  aside(:class="className")
+  aside
     .aside_widget
       h3.aside__title {{ title }}
       blockquote.aside__text
@@ -11,7 +11,7 @@
 <script>
   export default {
     name: "content-aside",
-    props: ["className", "title", "description", "cite"]
+    props: ["title", "description", "cite"]
   }
 </script>
 
@@ -23,14 +23,14 @@
     margin-bottom: 20px;
 
     @include media(">=desktop") {
-      flex: 0 0 40%;
-      max-width: 40%;
+      flex: 0 0 35%;
+      max-width: 35%;
       padding-left: 2%;
       padding-top: 10px;
       margin-bottom: 0;
     }
 
-    @include media(">=desktop") {
+    @include media(">=widescreen") {
       flex: 0 0 30%;
       max-width: 30%;
     }
@@ -46,14 +46,16 @@
     box-shadow: 0 2px 20px 6px rgba(#000, .3);
 
   @include media(">=desktop") {
+    width: 33%;
+
     position: fixed;
-    width: 37%;
     right: 15px;
 
     @supports (position: sticky) {
+      width: 100%;
+
       position: sticky;
       top: 10px;
-      width: 100%;
     }
   }
   @include media(">=widescreen") {
@@ -78,21 +80,25 @@
     padding-left: 20px;
 
   &:before {
-     content: "";
-     position: absolute;
-     top: 50%;
-     left: 0;
-     transform: translateY(-50%);
-     width: 4px;
-     height: 100%;
-     background-color: $base-color;
+    content: "";
+    width: 4px;
+    height: 100%;
+
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+
+    background-color: $base-color;
    }
   }
 
   .aside__author {
     display: flex;
     justify-content: flex-end;
+
     color: $info;
+
     font-size: 12px;
     font-family: "RobotoMedium", sans-serif;
     font-style: normal;

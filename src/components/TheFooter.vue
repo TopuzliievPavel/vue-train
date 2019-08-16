@@ -3,20 +3,18 @@
     .container
       p Some long long text about copyright
       ul.social-list
-        li.social-list__item(
-          v-for="(item, id) in socialItems"
-          :key="id")
-          a.social-list__link(:href="item.link")
+        li.social-list__item(v-for="(item, id) in socialItems"
+                            :key="id")
+          a.social-list__link(:href="item.link" target="_blank")
             i(:class="item.icon")
-
 </template>
 
 <script>
   export default {
     name: "app-footer",
-    computed: {
-      socialItems() {
-        return [
+    data() {
+      return {
+        socialItems: [
           {
             icon: "icon icon-twitter-logo",
             link: "https://twitter.com/?lang=ru"
@@ -38,8 +36,10 @@
 <style lang="scss" scoped>
   @import "../scss/base";
   .app-footer {
-    background-color: $success-dark;
     padding: 20px 0;
+
+    background-color: $success-dark;
+
     font-size: $size-xxs;
     line-height: 1.3;
 
@@ -70,14 +70,17 @@
   .icon {
     width: 42px;
     height: 42px;
+    margin-left: 10px;
+
     font-size: 18px;
     text-align: center;
     line-height: 42px;
-    margin-left: 10px;
+
     border-radius: 50%;
     display: block;
     background-color: $primary;
     color: $success-dark;
+
     transition: background-color .3s ease,
                 color .3s ease;
 

@@ -1,29 +1,18 @@
 <template lang="pug">
-  button(:class="className" @click="moveInformation") {{ title }}
+  button(type="button" @click="clickBtn") {{ title }}
 </template>
 
 <script>
   export default {
     name: "base-button",
-    data() {
-      return {
-        description: ""
-      }
-    },
     props: {
       title: {
-        type: String
-      },
-      className: {
         type: String
       }
     },
     methods: {
-      moveInformation() {
-        this.$emit("moveInformation");
-        this.$emit("showDescription");
-        this.$emit("sortArticles");
-        this.$emit("backToHome")
+      clickBtn() {
+        this.$emit("click-btn");
       }
     }
   }
@@ -32,31 +21,29 @@
 <style lang="scss" scoped>
   @import "../scss/base";
 
-  .btn,
-  .link {
-    cursor: pointer;
+  .btn {
     display: block;
     padding: $btn-padding;
     margin-bottom: 10px;
+
     font-size: $btn-font-size;
     line-height: 1.3;
-    font-family: "RobotoMedium", sans-serif;
+    font-weight: 500;
     color: $btn-color;
     text-transform: capitalize;
+
     border: solid 2px currentColor;
     border-radius: 4px;
-    background-color: transparent;
+    background: none;
 
-    transition: background-color .3s,
-    color .3s;
+    transition: color .3s;
 
     &:last-child {
       margin-bottom: 0;
     }
 
     &:hover,
-    &.btn_active,
-    &.link_active {
+    &.btn_active {
       color: $primary;
       border: solid 2px transparent;
 
@@ -73,16 +60,18 @@
 
   .btn_theme_primary {
     background-color: $primary;
-    border-color: $primary;
-    width: 100%;
+    border: 0;
+
+    &:hover {
+      border: 0;
+    }
 
     @include media(">=tablet") {
-      width: auto;
       margin: 0;
     }
   }
 
-  .section-contact_btn {
+  .btn_rounded {
     margin: 0;
     border-radius: 0 5px 5px 0;
   }

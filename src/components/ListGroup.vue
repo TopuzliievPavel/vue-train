@@ -32,6 +32,7 @@
       position: absolute;
       top: 50%;
       left: 0;
+
       transform: translateY(-50%);
       border-top: 4px solid transparent;
       border-left: 6px solid $primary;
